@@ -1,0 +1,13 @@
+function get_info_path {
+NUMBER_FOLDERS=$(sudo find $path -type d | wc -l)
+BIG_FOLDERS=$(sudo find $path -type d  -exec du -h {} + | sort -rh | head -5 | cat -n | awk '{ print $1" - "$3", "$2}')
+NUMBER_FILES=$(sudo find $1 -type f | wc -l)
+CONF_NUMBER_FILES=$(sudo find $path -type f -name "*.conf" | wc -l)
+EXE_NUMBER_FILES=$(sudo find $path -type f -executable -exec du -h {} + | wc | awk '{ print $1 }')
+TXT_NUMBER_FILES=$(sudo find $path -type f -name "*.txt" | wc -l)
+LOG_NUMBER_FILES=$(sudo find $path -type f -name "*.log" | wc -l)
+ARCHIVE_NUMBER_FILES=$(sudo find $path -regex '.*\(tar\|zip\|gz\|rar\)' | wc -l )
+LINK_NUMBER_FILES=$(sudo find $path -type l | wc -l)
+BIG_FILES=$(sudo find $path -type f -exec du -Sh {} + | sort -rh | head -10 | cat -n | awk '{print $1" - "$3", "$2}')
+BIG_EXE_FILES=$(sudo find $path -type f -executable -exec du -h {} + | sort -hr | head -10 | cat -n | awk '{print $1" - "$3", "$2}')=$(sudo find $1 -regex '.*\(tar\|zip\|gz\|rar\)' | wc -l )
+}

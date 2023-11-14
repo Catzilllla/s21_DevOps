@@ -1,0 +1,10 @@
+function check_path {
+if [ -z "$path" ]; then
+      echo "Invalid input. Path parametr required."
+      exit 1
+
+elif [ ! -d "$path" ]; then
+      echo "Invalid input. No such directory"
+      exit 1
+fi
+}

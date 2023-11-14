@@ -1,0 +1,18 @@
+function func {
+	HOSTNAME=$(hostname)
+	TIMEZONE=$(cat /etc/timezone)
+	USER=$(whoami)
+	OS=$(lsb_release -ds)
+	DATE=$(date +"%d %b %Y %H:%M:%S")
+	UPTIME=$(uptime | awk {'print $1'})
+	UPTIME_SEC=$(cat /proc/uptime | awk {'print $1'})
+	IP=$(ifconfig | head -2 | grep inet | awk {'print $2'})
+	MASK=$(ifconfig | head -2 | grep netmask | awk {'print $4'})
+	GATEWAY=$(ip r | grep default | awk {'print $3'})
+	RAM_TOTAL=$(free -m | grep Mem | awk {'printf "%.3f GB\n", $2/1000'})
+	RAM_USED=$(free -m | grep Mem | awk {'printf "%.3f GB\n", $3/1000'})
+	RAM_FREE=$(free -m | grep Mem | awk {'printf "%.3f GB\n", $4/1000'})
+	SPACE_ROOT=$(df / | grep mapper | awk {'printf "%.2f GB\n", $2/1000'})
+	SPACE_ROOT_USED=$(df / | grep mapper | awk {'printf "%.2f GB\n", $3/1000'})
+	SPACE_ROOT_FREE=$(df / | grep mapper | awk {'printf "%.2f GB\n", $4/1000'})
+}

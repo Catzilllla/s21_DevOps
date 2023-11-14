@@ -1,0 +1,85 @@
+function col_func {
+	if [ $1 -eq 1 ];
+	then
+		paint[1]=$white_b
+		color_1="white"
+	elif [ $1 -eq 2 ]; then
+		paint[1]=$red_b
+		color_1="red"
+	elif [ $1 -eq 3 ]; then
+		paint[1]=$green_b
+		color_1="green"
+	elif [ $1 -eq 4 ]; then
+		paint[1]=$blue_b
+		color_1="blue"
+	elif [ $1 -eq 5 ]; then
+		paint[1]=$purple_b
+		color_1="purple"
+	elif [ $1 -eq 6 ]; then
+		paint[1]=$black_b
+		color1="black"
+	fi
+
+	if [ $2 -eq 1 ];
+	then
+		paint[2]=$white_t
+		color_2="white"
+	elif [ $2 -eq 2 ]; then
+		paint[2]=$red_t
+		color_2="red"
+	elif [ $2 -eq 3 ]; then
+		paint[2]=$green_t
+		color_2="green"
+	elif [ $2 -eq 4 ]; then
+		paint[2]=$blue_t
+		color_2="blue"
+	elif [ $2 -eq 5 ]; then
+		paint[2]=$purple_t
+		color_2="purple"
+	elif [ $2 -eq 6 ]; then
+		paint[2]=$black_t
+		color_2="black"
+	fi
+
+	if [ $3 -eq 1 ];
+	then
+		paint[3]=$white_b
+		color_3="white"
+	elif [ $3 -eq 2 ]; then
+		paint[3]=$red_b
+		color_3="red"
+	elif [ $3 -eq 3 ]; then
+		paint[3]=$green_b
+		color_3="green"
+	elif [ $3 -eq 4 ]; then
+		paint[3]=$blue_b
+		color_3="blue"
+	elif [ $3 -eq 5 ]; then
+		paint[3]=$purple_b
+		color_3="purple"
+	elif [ $3 -eq 6 ]; then
+		paint[3]=$black_b
+		color_3="black"
+	fi
+
+	if [ $4 -eq 1 ];
+	then
+		paint[4]=$white_t
+		color_4="white"
+	elif [ $4 -eq 2 ]; then
+		paint[4]=$red_t
+		color_4="red"
+	elif [ $4 -eq 3 ]; then
+		paint[4]=$green_t
+		color_4="green"
+	elif [ $4 -eq 4 ]; then
+		paint[4]=$blue_t
+		color_4="blue"
+	elif [ $4 -eq 5 ]; then
+		paint[4]=$purple_t
+		color_4="purple"
+	elif [ $4 -eq 6 ]; then
+		paint[4]=$black_t
+		color_4="black"
+	fi
+}

@@ -1,0 +1,3 @@
+function funtest{
+echo "totaldir"
+}

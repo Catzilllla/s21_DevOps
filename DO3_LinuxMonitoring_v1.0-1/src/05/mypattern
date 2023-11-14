@@ -1,0 +1,19 @@
+function pattern {
+	echo -e "\033[32mTotal number of folders (including all nested ones) =\033[0m $total_dir"
+	echo -e "\033[32mTOP 5 folders of maximum size arranged in descending order (path and size):\033[0m"
+	echo "$top_5_big_low"
+	echo -e "\033[32mTotal number of files =\033[0m $total_files"
+	echo -e "\033[32mNumber of:\033[0m"
+	echo -e "\033[32mConfiguration files (with the .conf extention) =\033[0m $count_conf"
+	echo -e "\033[32mText files =\033[0m $text_files"
+	echo -e "\033[32mExecutable files =\033[0m $exe_files"
+	echo -e "\033[32mLog files (with the extension .log) =\033[0m $log_files"
+	echo -e "\033[32mArchive files =\033[0m $arch_files"
+	echo -e "\033[32mSymbolic links =\033[0m $symb_links"
+	echo -e "\033[32mTOP 10 files of maximum size arranged in descending order (path, size and type):\033[0m"
+	echo "$top_10_big_low_type"
+	echo -e "\033[32mTOP 10 executable files of the maximum size arranged in descending order (path, size and MD5 hash of file):\033[0m"
+	echo "$top_10_big_low_exec"
+	echo -e "\033[32mScript execution time (in seconds) =\033[0m $time_exe"
+}
+

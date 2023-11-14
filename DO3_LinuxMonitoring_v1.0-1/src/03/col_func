@@ -1,0 +1,61 @@
+function col_func {
+	if [ $1 -eq 1 ]
+	then
+		paint[1]=$white_b
+	elif [ $1 -eq 2 ]; then
+		paint[1]=$red_b
+	elif [ $1 -eq 3 ]; then
+		paint[1]=$green_b
+	elif [ $1 -eq 4 ]; then
+		paint[1]=$blue_b
+	elif [ $1 -eq 5 ]; then
+		paint[1]=$purple_b
+	elif [ $1 -eq 6 ]; then
+		paint[1]=$black_b
+	fi
+
+	if [ $2 -eq 1 ]
+	then
+		paint[2]=$white_t
+	elif [ $2 -eq 2 ]; then
+		paint[2]=$red_t
+	elif [ $2 -eq 3 ]; then
+		paint[2]=$green_t
+	elif [ $2 -eq 4 ]; then
+		paint[2]=$blue_t
+	elif [ $2 -eq 5 ]; then
+		paint[2]=$purple_t
+	elif [ $2 -eq 6 ]; then
+		paint[2]=$black_t
+	fi
+
+	if [ $3 -eq 1 ]
+	then
+		paint[3]=$white_b
+	elif [ $3 -eq 2 ]; then
+		paint[3]=$red_b
+	elif [ $3 -eq 3 ]; then
+		paint[3]=$green_b
+	elif [ $3 -eq 4 ]; then
+		paint[3]=$blue_b
+	elif [ $3 -eq 5 ]; then
+		paint[3]=$purple_b
+	elif [ $3 -eq 6 ]; then
+		paint[3]=$black_b
+	fi
+
+	if [ $4 -eq 1 ]
+	then
+		paint[4]=$white_t
+	elif [ $4 -eq 2 ]; then
+		paint[4]=$red_t
+	elif [ $4 -eq 3 ]; then
+		paint[4]=$green_t
+	elif [ $4 -eq 4 ]; then
+		paint[4]=$blue_t
+	elif [ $4 -eq 5 ]; then
+		paint[4]=$purple_t
+	elif [ $4 -eq 6 ]; then
+		paint[4]=$black_t
+	fi
+}

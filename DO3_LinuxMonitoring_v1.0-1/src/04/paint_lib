@@ -1,0 +1,20 @@
+#!/bin/bash
+
+function paint_lib {
+	echo -e "${1}${2}HOSTNAME${default}${default} = ${3}${4}${HOSTNAME}${default}${default}"
+	echo -e "${1}${2}TIMEZONE${default}${default} = ${3}${4}$TIMEZONE}${default}${default}"
+	echo -e "${1}${2}USER${default}${default} = ${3}${4}$USER${default}${default}"
+	echo -e "${1}${2}OS${default}${default} = ${3}${4}$OS${default}${default}"
+	echo -e "${1}${2}DATE${default}${default} = ${3}${4}$DATE${default}${default}"
+	echo -e "${1}${2}UPTIME${default}${default} = ${3}${4}$UPTIME${default}${default}"
+	echo -e "${1}${2}UPTIME_SEC${default}${default} = ${3}${4}$UPTIME_SEC${default}${default}"
+	echo -e "${1}${2}IP${default}${default} = ${3}${4}$IP${default}${default}"
+	echo -e "${1}${2}MASK${default}${default} = ${3}${4}$MASK${default}${default}"
+	echo -e "${1}${2}GATEWAY${default}${default} = ${3}${4}$GATEWAY${default}${default}"
+	echo -e "${1}${2}RAM_TOTAL${default}${default} = ${3}${4}$RAM_TOTAL${default}${default}"
+	echo -e "${1}${2}RAM_USED${default}${default} = ${3}${4}$RAM_USED${default}${default}"
+	echo -e "${1}${2}RAM_FREE${default}${default} = ${3}${4}$RAM_FREE${default}${default}"
+	echo -e "${1}${2}SPACE_ROOT${default}${default} = ${3}${4}$SPACE_ROOT${default}${default}"
+	echo -e "${1}${2}SPACE_ROOT_USED${default}${default} = ${3}${4}$SPACE_ROOT_USED${default}${default}"
+	echo -e "${1}${2}SPACE_ROOT_FREE${default}${default} = ${3}${4}$SPACE_ROOT_FREE${default}${default}"
+}
