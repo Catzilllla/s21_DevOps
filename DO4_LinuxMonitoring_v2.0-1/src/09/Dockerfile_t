@@ -1,0 +1,16 @@
+FROM nginx:latest
+
+RUN rm /etc/nginx/nginx.conf \
+    && rm -Rf /var/log/nginx/*
+
+RUN apt-get update && \
+    apt-get install -y apt-utils gcc spawn-fcgi libfcgi-dev sockstat curl
+WORKDIR /app
+COPY server.c .
+RUN gcc -Wall -Werror -Wextra -Wpedantic -std=c11 -o server server.c -lfcgi
+RUN touch /var/run/nginx.pid
+COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./index.html ./usr/share/nginx/html/index.html
+COPY run_sc_nginx.sh .
+
+CMD ["sh", "./run_sc_nginx.sh"; nginx -g \"daemon off;\""]

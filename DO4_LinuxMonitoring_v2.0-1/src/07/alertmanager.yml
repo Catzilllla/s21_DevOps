@@ -1,0 +1,33 @@
+global:
+ resolve_timeout: 5m
+ telegram_api_url: "https://api.telegram.org"
+
+templates:
+  - '/etc/alertmanager/*.tmpl'
+
+receivers:
+ - name: blackhole
+ - name: telegram-test
+   telegram_configs:
+    - chat_id: 1002135334767
+      bot_token: 5306488432:AAHSUp-jzHTOGqbv9NOlsJfLfelCY8dbrdE
+      api_url: "https://api.telegram.org"
+      send_resolved: true
+      parse_mode: HTML
+      message: '{{ template "telegram.default" . }}'
+
+
+route:
+ group_by: ['ds_id'] # Алерты группируются по UUID кластера.
+ group_wait: 15s
+ group_interval: 30s
+ repeat_interval: 12h
+ receiver: telegram-test
+ routes:
+  - receiver: telegram-test
+    continue: true
+    matchers:
+     - severity="critical"
+  - receiver: blackhole
+    matchers:
+     - alertname="Watchdog"

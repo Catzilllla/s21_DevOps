@@ -1,0 +1,21 @@
+global:
+  scrape_interval:     15s
+
+scrape_configs:
+  - job_name: "prometheus"
+    scrape_interval: 5s
+    static_configs:
+    - targets: ["localhost:9090"]
+
+  - job_name: "node"
+    scrape_interval: 5s
+    static_configs:
+    - targets: ["node-exporter:9100"]
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: "node_memory_MemAvailable"
+        action: keep
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets: ['alertmanager:9093']
