@@ -232,19 +232,19 @@ sudo docker stop 714e6f8d770f
 ``````
 sudo docker rmi c20060033e06 -f
 ``````
-![Alt text](image-19.png)
+![Alt text](img/image-19.png)
 
 ##### ## Рис_21 ## Удалить остановленный контейнер
 ``````
 sudo docker rm 714e6f8d770f
 ``````
-![Alt text](image-18.png)
+![Alt text](img/image-18.png)
 
 ##### ## Рис_22 ## Импортировать контейнер обратно через команду *import*
 ``````
 cat container.tar | sudo docker import nginx_imp:exported
 ``````
-![Alt text](image-20.png)
+![Alt text](img/image-20.png)
 
 ##### ## Рис_23 ## Запустить импортированный контейнер
 ``````
@@ -253,23 +253,23 @@ cat container.tar | sudo docker import nginx_imp:exported
 Для дальнейшего будем использовать команды 'save' и 'load'
 ``````
 ###### ## Рис_24 ## Ошибка после неправильного экспорта. Переходим на использоание команд save и load
-![Alt text](image-21.png)
+![Alt text](img/image-21.png)
 
 ``````
 sudo docker save nginx > nginx_exported.tar
 ``````
 
-![Alt text](image-22.png)
+![Alt text](img/image-22.png)
 
 ``````
 sudo docker docker load -i nginx_exported.tar
 ``````
-![Alt text](image-23.png)
-![Alt text](image-24.png)
+![Alt text](img/image-23.png)
+![Alt text](img/image-24.png)
 
 ##### ###### ## Рис_25 ## Проверить, что по адресу *localhost:80/status* отдается страничка со статусом сервера **nginx**
-![Alt text](image-25.png)
-![Alt text](image-27.png)
+![Alt text](img/image-25.png)
+![Alt text](img/image-27.png)
 ``````
 Команда `docker import` используется для создания образа из архивного файла или из данных, прочитанных из стандартного ввода.
 
@@ -329,7 +329,7 @@ https://rsdn.org/article/unix/sockets.xml
 ``````
 sudo docker run --name nginxFcgi -p 81:81 -d nginx
 ``````
-![Alt text](image-28.png)
+![Alt text](img/image-28.png)
 
 Настраиваем nginx. Копируем nginx.conf в контейнер
 ``````
@@ -363,7 +363,7 @@ spawn-fcgi -p 8080 ./nfcgi
 ``````
 
 ##### ## Рис_27 ## Проверить запущенные процессы. Если видим как на картинке, значит FastCgi запущен
-![Alt text](image-29.png)
+![Alt text](img/image-29.png)
 
 Проверить запущенные процессы
 ``````
@@ -371,9 +371,9 @@ sockstat -lu
 ``````
 
 ##### ## Рис_28 ## Делаем http запрос по порту 81 и проверяем ответ
-![Alt text](image-30.png)
+![Alt text](img/image-30.png)
 
-![Alt text](image-31.png)
+![Alt text](img/image-31.png)
 
 
 ## Part 4. Свой докер
@@ -395,7 +395,7 @@ _**nginx** можно установить внутрь докера самос�
 ``````
 sudo docker build -t nginx_fcgi_server:newserv . 
 ``````
-![Alt text](image-35.png)
+![Alt text](img/image-35.png)
 
 ##### Проверить через `docker images`, что все собралось корректно
 ##### Запустить собранный докер образ с маппингом 81 порта на 80 на локальной машине и маппингом папки *./nginx* внутрь контейнера по адресу, где лежат конфигурационные файлы **nginx**'а (см. [Часть 2](#part-2-операции-с-контейнером))
@@ -403,15 +403,15 @@ sudo docker build -t nginx_fcgi_server:newserv .
 ``````
 sudo docker run -p 80:81 -d nginx_fcgi_server:newserv . 
 ``````
-![Alt text](image-36.png)
+![Alt text](img/image-36.png)
 
-![Alt text](image-37.png)
+![Alt text](img/image-37.png)
 
 ##### Дописать в *./nginx/nginx.conf* проксирование странички */status*, по которой надо отдавать статус сервера **nginx**
 ##### Перезапустить докер образ
 ##### ## Рис_31 ## Проверить, что теперь по *localhost:80/status* отдается страничка со статусом **nginx**
 
-![Alt text](image-38.png)
+![Alt text](img/image-38.png)
 
 ``````
 Монтирование файла конфигурации Nginx из хост-системы в контейнер позволяет изменять конфигурацию Nginx без необходимости пересобирать образ контейнера. Таким образом, можно вносить изменения в конфигурацию на лету, без остановки и перезапуска контейнера. Кроме того, это позволяет использовать один и тот же файл конфигурации для нескольких контейнеров, что упрощает управление конфигурацией и обновления.
@@ -439,8 +439,10 @@ sudo dpkg -i dockle.deb && rm dockle.deb
 ```
 
 ##### Просканировать образ из предыдущего задания через `dockle [image_id|repository]`
-
-![Alt text](image-39.png)
+``````
+sudo dockle myserver:part5
+``````
+![Alt text](img/image-39.png)
 
 ``````
 FATAL - ошибка в шифровании данных и использовании авторизационных данных в переменных окружения. Проблема решается при сборки образа Dockerfile через ubuntu и затем установки nginx из проверенного репозитория с gpg  ключом. Либо воспользоваться командой dockle -i CIS-DI-0010
@@ -451,7 +453,7 @@ FATAL - ошибка в шифровании данных и использов�
 ``````
 dockle -i CIS-DI-0010 myserver:part5 
 ``````
-![Alt text](image-40.png)
+![Alt text](img/image-40.png)
 
 
 
@@ -470,3 +472,18 @@ dockle -i CIS-DI-0010 myserver:part5
 ##### Остановить все запущенные контейнеры
 ##### Собрать и запустить проект с помощью команд `docker-compose build` и `docker-compose up`
 ##### Проверить, что в браузере по *localhost:80* отдается написанная вами страничка, как и ранее
+
+``````
+sudo apt install docker-compose
+``````
+
+
+## Команды управления docker-compose
+
+``````
+docker-compose build
+``````
+``````
+docker-compose up / down
+``````
+

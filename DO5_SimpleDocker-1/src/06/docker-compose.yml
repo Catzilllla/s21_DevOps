@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  app:
+    build: ./appf05
+    restart: unless-stopped
+    networks:
+      - my-network
+
+  proxy:
+    image: nginx
+    ports:
+      - "8080:80"
+    networks:
+      - my-network
+    depends_on:
+      - app
+    command: touch /var/run/nginx.pid;
+    command: chown -R nginx:nginx /var/run/nginx.pid;
+    command: [nginx, '-g', 'daemon off;']
+    restart: unless-stopped
+
+networks:
+  my-network:

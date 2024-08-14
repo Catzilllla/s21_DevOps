@@ -1,0 +1,29 @@
+FROM ubuntu
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y nginx gcc spawn-fcgi libfcgi-dev
+
+# Добавляем пользователя nginx
+RUN useradd -u 1001 nginxt
+
+# Предоставляем права доступа для пользователя nginx на необходимые директории
+RUN chown -R nginxt:nginxt /var/log/nginx
+#RUN chown -R nginxt:nginxt /var/cache/nginx
+
+# Переключаемся на пользователя nginx
+USER nginxt
+
+COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./server.c .
+COPY ./runscript.sh .
+
+# Опционально: копируем статические файлы (HTML, CSS, JS) для веб-приложения
+# COPY ./static /usr/share/nginx/html
+
+# Опционально: открываем порт, если требуется
+# EXPOSE 80
+
+# Запускаем Nginx в фоновом режиме при старте контейнера
+CMD ["/bin/bash", "-c", "./runscript.sh; nginx -g \"daemon off;\""]

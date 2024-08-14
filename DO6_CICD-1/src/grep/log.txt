@@ -1,0 +1,15 @@
+argv[optind] = return
+optarg = (null)
+argv[optind + 1] = test_files/test_2_grep.txt
+===========DEFORE PARSE====================
+
+
+
+argv[optind] = return
+argv[optind + 1] = test_files/test_2_grep.txt
+optarg = (null)
+count_file = 4
+*patterns = return
+    return str1;
+    return size;
+    return cmp;
